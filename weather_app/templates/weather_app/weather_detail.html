@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+    <link rel="stylesheet" href="{% static 'css/weather_app.css'%}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Weather Report</h1>
+
+        <form action="{% url 'weather' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.city.id_for_label }}">City:</label>
+                {{ form.city }}
+            </div>
+            <button type="submit">Get weather</button>
+        </form>
+
+        {% if weather_data %}
+
+        <h2>Weather for {{weather_data.city}}</h2>
+        <p>Temperature: {{weather_data.temperature}}&#8451;</p>
+        <p>Weather description: {{weather_data.weather_description}}</p>
+        {% endif %}
+
+    </div>
+</body>
+</html>
