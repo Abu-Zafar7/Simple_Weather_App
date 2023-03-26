@@ -4,13 +4,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import WeatherSerializer
 from .forms import WeatherForm
-import creds
+import api_key
 # Create your views here.
 
 @api_view(['GET'])
 def weather_view(request):
     city = request.query_params.get('city','Mumbai')
-    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={creds.api_key}&units=metric'
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key.api_key}&units=metric'
     response = requests.get(url)
     data = {
         'city':city,
