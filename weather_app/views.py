@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import WeatherSerializer
 from .forms import WeatherForm
-import api_key
+from api_key import api_key
 # Create your views here.
 
 @api_view(['GET'])
